@@ -7,6 +7,9 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(process.env.GLOBAL_PREFIX || 'api');
+  app.enableCors({
+    origin: process.env.ALLOWED_CORS.split(';') || 'http://localhost:5173',
+  });
   app.useGlobalPipes(new ValidationPipe());
 
   /* SWAGGER config */
