@@ -22,7 +22,7 @@ export class TodoService {
   }
 
   public async getTodoById(todoId: string): Promise<Todo> {
-    const todo = await this.todoRepository.findOne({ id: todoId });
+    const todo = await this.todoRepository.findOne({ _id: todoId });
 
     if (!todo) throw new NotFoundException(`no todo with id": ${todoId}`);
     return todo;
