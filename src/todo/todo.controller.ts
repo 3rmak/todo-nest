@@ -31,12 +31,12 @@ export class TodoController {
       .then((todo) => new TodoResponseDto(todo));
   }
 
-  @Get('/:status')
-  @ApiOperation({ description: 'get todo filtered by status' })
+  @Get()
+  @ApiOperation({ description: 'get all todo ' })
   @ApiResponse({ status: 200, type: [TodoResponseDto] })
-  public async getAllTodos(@Param() param: TodoStatusDto) {
+  public async getAllTodos() {
     return this.todoService
-      .getTodoByStatus(param.status)
+      .getAllTodo()
       .then((todos) =>
         Promise.all(todos.map((todo) => new TodoResponseDto(todo))),
       );

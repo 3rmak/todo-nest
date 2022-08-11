@@ -28,8 +28,8 @@ export class TodoService {
     return todo;
   }
 
-  public async getTodoByStatus(status: TodoStatusEnum): Promise<Todo[]> {
-    return this.todoRepository.find({ status });
+  public async getAllTodo(): Promise<Todo[]> {
+    return this.todoRepository.find();
   }
 
   public async updateTodoStatus(
